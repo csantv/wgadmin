@@ -1,10 +1,8 @@
 package main
 
 import (
-	"crypto/rand"
-	"encoding/base64"
 	"fmt"
-	"golang.org/x/crypto/nacl/box"
+	"github.com/csantv/wgadmin/wg"
 	"golang.org/x/crypto/ssh"
 	"io"
 	"io/ioutil"
@@ -85,12 +83,11 @@ func main() {
 		panic(err)
 	}
 
-	public, priv, err := box.GenerateKey(rand.Reader)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(base64.StdEncoding.EncodeToString(public[:]))
-	fmt.Println(base64.StdEncoding.EncodeToString(priv[:]))
+
+
+	fmt.Println(public)
+	fmt.Println(private)
+	fmt.Println(preshared)
 
 	session.Run("sh script.sh UwU")
 }
